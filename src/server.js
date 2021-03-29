@@ -1,9 +1,11 @@
 const express = require("express");
 const server = express();
+const routes = require('./routes');
 
-server.get('/', (req, res) => {
-  return res.status(200).json('OK')
-});
+// Habilitar arquivos estáticos
+server.use(express.static("public"));
+
+server.use(routes);
 
 server.get('/health', (req, res) => {
   return res.status(200).json('UP')
